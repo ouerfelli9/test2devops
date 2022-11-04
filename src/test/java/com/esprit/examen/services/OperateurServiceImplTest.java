@@ -1,6 +1,7 @@
 package com.esprit.examen.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -51,7 +52,7 @@ Logger log= (Logger) LoggerFactory.getLogger(OperateurServiceImplTest.class);
 	
 	
 	@Test
-	public void AddStockTest() {
+	public void AddOperateurTest() {
 		Operateur o =new Operateur("op4","10","80");
 		o.setIdOperateur(null);
 		operateurService.addOperateur(o);
@@ -75,5 +76,13 @@ Logger log= (Logger) LoggerFactory.getLogger(OperateurServiceImplTest.class);
 		//verify(stockRepository,times(1)).delete(null);
 	}
 	
-
+	@Test
+	public void updateStockTest() {
+		Operateur o= new Operateur("op3", "22", "66");
+		when(operateurRepository.save(o)).thenReturn(o);
+		assertNotNull(o);
+		assertEquals(o, operateurService.updateOperateur(o));
+		log.info("update==>"+o.toString());
+			
+	}
 }
