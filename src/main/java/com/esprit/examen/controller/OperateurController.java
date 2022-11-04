@@ -1,10 +1,10 @@
-package com.esprit.examen.controllers;
+package com.esprit.examen.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.esprit.examen.entities.Operateur;
+import com.esprit.examen.entitie.Operateur;
 import com.esprit.examen.services.IOperateurService;
 
 import io.swagger.annotations.Api;
@@ -21,8 +21,8 @@ public class OperateurController {
 	@GetMapping("/retrieve-all-operateurs")
 	@ResponseBody
 	public List<Operateur> getOperateurs() {
-		List<Operateur> list = operateurService.retrieveAllOperateurs();
-		return list;
+		return operateurService.retrieveAllOperateurs();
+		
 	}
 
 	@GetMapping("/retrieve-operateur/{operateur-id}")
@@ -34,8 +34,7 @@ public class OperateurController {
 	@PostMapping("/add-operateur")
 	@ResponseBody
 	public Operateur addOperateur(@RequestBody Operateur op) {
-		Operateur operateur = operateurService.addOperateur(op);
-		return operateur;
+		return operateurService.addOperateur(op);
 	}
 
 	@DeleteMapping("/remove-operateur/{operateur-id}")

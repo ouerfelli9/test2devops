@@ -1,16 +1,14 @@
-package com.esprit.examen.entities;
+package com.esprit.examen.entitie;
 
 import java.io.Serializable;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.esprit.examen.services.OperateurServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Operateur implements Serializable{
 	private static final long serialVersionUID = 1L;
+	private transient Logger log= (Logger) LoggerFactory.getLogger(OperateurServiceImpl.class);
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +30,9 @@ public class Operateur implements Serializable{
 	private String prenom;
 	
 	private String password;
+	
 	public Operateur(String string, String string2, String string3) {
-		// TODO Auto-generated constructor stub
+		log.info (string, string2, string3);
 	}
 	public Long getIdOperateur() {
 		return idOperateur;
