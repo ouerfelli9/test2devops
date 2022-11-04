@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+    environment {
+        registry = "ouerfelli9/operateur2"
+        registryCredential = 'docker_hub_id'
+        dockerImage = ''
+    }
+
+stages {
+    
+    
+         stage('Hello') {
+          
+            steps {
+    emailext (attachLog: true, body: '''Bonjour Vous trouvez, ci joint un rapport détaillé de votre dernier build. Bon travail :) Bien à vous body''', subject: '[Validation Projet Devops]: Rapport Détaillé subject', to: 'ouerfelli.9@gmail.com')
+               
+            }
+        }
+        
+    
+      
+        stage('Git stage') {
+          
+            steps {
+                echo "Getting project form github";
+                 git branch: 'operateur2',
+                 url : 'https://github.com/ouerfelli9/test2devops';
+                 
+               
+            }
+        }
+        
+        
+        
+        stage('MVN clean stage') {
+          
+            steps {
+            sh 'mvn clean'
+               
+            }
+        }
+        
+        
+
+        stage('MVN install stage') {
+          
+            steps {
+            sh 'mvn install'
+               
+            }
+        }
+        
+        
+
+        stage('MVN COMPILE stage') {
+          
+            steps {
+            sh 'mvn compile'
+               
+            }
+        }
+
+}    
+}
