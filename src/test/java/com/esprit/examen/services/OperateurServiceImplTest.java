@@ -48,41 +48,40 @@ Logger log= (Logger) LoggerFactory.getLogger(OperateurServiceImplTest.class);
 		List<Operateur> opList=operateurService.retrieveAllOperateurs();
 		assertEquals(3, opList.size());
 		log.info("retrieveAll==>" +opList.toString());
+
 	}
 	
 	
-	@Test
-	public void AddOperateurTest() {
-		Operateur o =new Operateur("op4","10","80");
-		o.setIdOperateur(null);
-		operateurService.addOperateur(o);
-		verify(operateurRepository,times(1)).save(o);
-		System.out.println(o);
-		log.info("add==>" + o.toString());
+		@Test
+		public void AddOperateurTest() {
+			Operateur o =new Operateur("op4","10","80");
+			o.setIdOperateur(null);
+			operateurService.addOperateur(o);
+			verify(operateurRepository,times(1)).save(o);
+			log.info("add==>" + o.toString());
+			assertNotNull(o);
+
+	}
+	
+		@Test
+		public void DeleteOperateurTest() {
+			Operateur o =new Operateur("op4","10","80");
+			operateurRepository.save(o);
+			operateurService.deleteOperateur(o.getIdOperateur());
+			verify(operateurRepository,times(1)).deleteById(o.getIdOperateur());
+			log.info("delete==>"+ o.toString());
+			assertNotNull(o);
+
 		
-		// when(stockRepository.save(s)).thenReturn(s);
-		//assertEquals(s, stockService.addStock(s));
 	}
 	
-	@Test
-	public void DeleteOperateurTest() {
-		Operateur o =new Operateur("op4","10","80");
-		operateurRepository.save(o);
-		operateurService.deleteOperateur(o.getIdOperateur());
-		verify(operateurRepository,times(1)).deleteById(o.getIdOperateur());
-		log.info("delete==>"+ o.toString());
-		
-		//stockService.deleteStock(null);
-		//verify(stockRepository,times(1)).delete(null);
-	}
-	
-	@Test
-	public void updateStockTest() {
-		Operateur o= new Operateur("op3", "22", "66");
-		when(operateurRepository.save(o)).thenReturn(o);
-		assertNotNull(o);
-		assertEquals(o, operateurService.updateOperateur(o));
-		log.info("update==>"+o.toString());
-			
-	}
+		@Test
+		public void updateStockTest() {
+			Operateur o= new Operateur("op3", "22", "66");
+			when(operateurRepository.save(o)).thenReturn(o);
+			assertNotNull(o);
+			assertEquals(o, operateurService.updateOperateur(o));
+			log.info("update==>"+o.toString());
+				
+		}
 }
