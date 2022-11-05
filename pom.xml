@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>testProject</artifactId>
-	<version>2.0</version>
+	<version>1.0</version>
 	<name>testProject</name>
 	<description>testProject</description>
 	<properties>
@@ -109,6 +109,8 @@
 							</execution>
 						</executions>
 			</plugin>
+			
+
 		</plugins>
 	</build>
 
