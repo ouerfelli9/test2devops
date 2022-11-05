@@ -59,6 +59,61 @@ stages {
                
             }
         }
+        
+          stage('MVN TEST Mockito stage') {
+          
+            steps {
+            sh 'mvn test'
+               
+            }
+        }
+        
+         
+    
+        stage('SonarQube stage') {
+          
+            steps {
+            sh'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+               
+            }
+        }
+        
+      
+        
+        stage('Nexus stage') {
+          
+            steps {
+            sh 'mvn deploy'
+               }
+        } 
+
+       
+        stage('docker compose stage') {
+          
+            steps {
+            sh 'docker-compose up -d'
+               }
+        } */
+        
+     /*   stage('Building our docker image') {
+            steps {
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+        
+        stage('Deploy our image to Docker Hub') {
+            steps {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        } */
+        
+        
 
 }    
 }
