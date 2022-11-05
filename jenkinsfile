@@ -19,7 +19,7 @@ stages {
         
     
       
-        stage('Git stage') {
+       /* stage('Git stage') {
           
             steps {
                 echo "Getting project form github";
@@ -28,7 +28,7 @@ stages {
                  
                
             }
-        }
+        }*/
         
         
         
