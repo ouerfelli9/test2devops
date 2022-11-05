@@ -87,15 +87,8 @@ stages {
                }
         } 
 
-       
-       /* stage('docker compose stage') {
-          
-            steps {
-            sh 'docker-compose up -d'
-               }
-        } */
         
-     /*   stage('Building our docker image') {
+     	 stage('Building our docker image') {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -103,7 +96,7 @@ stages {
             }
         }
         
-        stage('Deploy our image to Docker Hub') {
+       /* stage('Deploy our image to Docker Hub') {
             steps {
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -113,7 +106,14 @@ stages {
             }
         } */
         
-        
+        /*  stage('docker compose stage') {
+          
+            steps {
+            sh 'docker-compose up -d'
+               }
+        } */
+
+
 
 }    
 }
