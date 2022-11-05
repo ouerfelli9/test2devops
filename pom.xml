@@ -11,8 +11,8 @@
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>devopsProject</artifactId>
 	<version>1.0</version>
-	<name>testProject</name>
-	<description>testProject</description>
+	<name>devopsProjectt</name>
+	<description>devopsProject</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
