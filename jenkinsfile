@@ -9,27 +9,13 @@ pipeline {
 stages {
     
     
-         /*stage('Hello') {
+         stage('Hello') {
           
             steps {
     emailext (attachLog: true, body: '''Bonjour Vous trouvez, ci joint un rapport détaillé de votre dernier build. Bon travail :) Bien à vous body''', subject: '[Validation Projet Devops]: Rapport Détaillé subject', to: 'ouerfelli.9@gmail.com')
                
             }
-        }*/
-        
-        
-        stage('Ok') {
-            steps {
-                echo "Ok"
-            }
-       }
-    
-    post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
-    }
-        
         
     
       
@@ -126,8 +112,13 @@ stages {
             sh 'docker-compose up -d'
                }
         } 
-
-
-
+        
+        
 }    
+
+post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
 }
