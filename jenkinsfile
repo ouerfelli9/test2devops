@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         registry = "ouerfelli9/operateur2"
-        registryCredential = 'docker_hub_id2'
+        registryCredential = 'docker_hub_id'
         dockerImage = ''
     }
 
@@ -92,7 +92,6 @@ stages {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                     return_1_if_success.exe
                 }
             }
         }
