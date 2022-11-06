@@ -92,6 +92,7 @@ stages {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                     return_1_if_success.exe
                 }
             }
         }
