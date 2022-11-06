@@ -15,7 +15,7 @@ services:
       - /home/mysql/data:/var/lib/mysql
   spring-boot:
     build: ./
-    container_name: spring
+    container_name: spring2
     ports:
       - 8089:8089
     depends_on:
