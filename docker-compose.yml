@@ -2,7 +2,7 @@ version: '2.2'
 services:
   database:
     image: mysql:8
-    container_name: mysqldb1
+    container_name: mysqldb2
     environment:
       MYSQL_DATABASE: tpachato
       MYSQL_USER: oussema
