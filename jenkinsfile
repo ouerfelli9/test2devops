@@ -106,12 +106,12 @@ stages {
             }
         } 
         
-        /*  stage('docker compose stage') {
+          stage('docker compose stage') {
           
             steps {
             sh 'docker-compose up -d'
                }
-        } */
+        } 
 
 
 
