@@ -8,14 +8,11 @@ pipeline {
 
 stages {
     
-    
-         stage('Hello') {
-          
-            steps {
-    emailext (attachLog: true, body: '''Bonjour Vous trouvez, ci joint un rapport détaillé de votre dernier build. Bon travail :) Bien à vous body''', subject: '[Validation Projet Devops]: Rapport Détaillé subject', to: 'ouerfelli.9@gmail.com')
-               
-            }
-        }
+    /*stage("Run the container with ANSIBLE"){
+                              steps {
+                                  sh 'ansible-playbook ansible.yml'
+                                     }
+                         }*/
         
     
       
@@ -60,7 +57,7 @@ stages {
             }
         }
         
-          stage('MVN TEST Mockito stage') {
+          stage('MVN TEST Mockito <JUnit5> stage') {
           
             steps {
             sh 'mvn test'
@@ -119,21 +116,21 @@ stages {
                     success {
                         mail to: "oussema.ouerfelli@esprit.tn",
                         body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
-                        from: 'oussema.ouerfelli',
+                        from: 'oussema.ouerfelli@esprit.tn',
                         subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
                     }
 
                     failure{
-                        mail to: "oussema.ouerfelli",
+                        mail to: "oussema.ouerfelli@esprit.tn",
                         subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                        from: 'oussema.ouerfelli',
+                        from: 'oussema.ouerfelli@esprit.tn',
                         body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
                     }
 
                     changed{
-                        mail to: "oussema.ouerfelli",
+                        mail to: "oussema.ouerfelli@esprit.tn",
                         subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                        from: 'oussema.ouerfelli',
+                        from: 'oussema.ouerfelli@esprit.tn',
                         body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
                     }
                 }
