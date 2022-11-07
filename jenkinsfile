@@ -114,7 +114,7 @@ stages {
     post {
 
                     success {
-                        mail to: "oussema.ouerfelli@esprit.tn",
+                        mail to: "ouerfelli.9@gmail.com",
                         body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
                         from: 'oussema.ouerfelli@esprit.tn',
                         subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
