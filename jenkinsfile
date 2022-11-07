@@ -111,11 +111,31 @@ stages {
             steps {
             sh 'docker-compose up -d'
                }
-        } 
-        
-        
-         
-                
+        }          
         
     }
+    post {
+
+                    success {
+                        mail to: "oussema.ouerfelli@esprit.tn",
+                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
+                        from: 'oussema.ouerfelli',
+                        subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+                    }
+
+                    failure{
+                        mail to: "oussema.ouerfelli",
+                        subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                        from: 'oussema.ouerfelli',
+                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                    }
+
+                    changed{
+                        mail to: "oussema.ouerfelli",
+                        subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                        from: 'oussema.ouerfelli',
+                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                    }
+                }
+    
 }
