@@ -22,7 +22,9 @@ import com.esprit.examen.entitie.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
 
 
-@SpringBootTest
+//@SpringBootTest
+@SpringBootTest(classes =OperateurServiceImplTest.class)
+
 @ExtendWith(MockitoExtension.class)
 public class OperateurServiceImplTest {
 	
@@ -32,6 +34,7 @@ Logger log= (Logger) LoggerFactory.getLogger(OperateurServiceImplTest.class);
 	 OperateurServiceImpl operateurService;
 	@Mock
 	 OperateurRepository operateurRepository;
+	
 	
 	
 	
