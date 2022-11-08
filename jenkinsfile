@@ -27,14 +27,7 @@ stages {
             }
         }*/
         
-        
-         stage('docker compose stage') {
-          
-            steps {
-            sh 'docker-compose up -d'
-               }
-        }      
-        
+       
         
         
         stage('MVN clean stage') {
@@ -111,7 +104,14 @@ stages {
             }
         } 
         
-         
+          
+         stage('docker compose stage') {
+          
+            steps {
+            sh 'docker-compose up -d'
+               }
+        }      
+        
          
          
              
