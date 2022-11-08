@@ -2,20 +2,20 @@ version: '2.2'
 services:
   database:
     image: mysql:8
-    container_name: mysqldb2
+    container_name: mysqldb3
     environment:
       MYSQL_DATABASE: tpachato
       MYSQL_USER: oussema
       MYSQL_PASSWORD: ouss
       MYSQL_ROOT_PASSWORD: ouss
     ports:
-      - 3400:3306
+      - 3306:3306
 
     volumes:
       - /home/mysql/data:/var/lib/mysql
   spring-boot:
     build: ./
-    container_name: spring2
+    container_name: spring3
     ports:
       - 8888:8089
     depends_on:
