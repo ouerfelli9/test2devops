@@ -22,7 +22,6 @@ import com.esprit.examen.entitie.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
 
 
-//@SpringBootTest
 @SpringBootTest(classes =OperateurServiceImplTest.class)
 
 @ExtendWith(MockitoExtension.class)
