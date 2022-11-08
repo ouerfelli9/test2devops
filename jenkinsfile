@@ -8,12 +8,7 @@ pipeline {
 
 stages {
 
-stage('docker compose stage') {
-          
-            steps {
-            sh 'docker-compose up -d'
-               }
-        }      
+
     
     /*stage("Run the container with ANSIBLE"){
                               steps {
@@ -112,12 +107,12 @@ stage('docker compose stage') {
         } 
         
           
-        /* stage('docker compose stage') {
+        stage('docker compose stage') {
           
             steps {
             sh 'docker-compose up -d'
                }
-        }      */
+        }      
         
          
          
