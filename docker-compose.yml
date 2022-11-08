@@ -1,37 +1,23 @@
-version: "2.2"
-
+version: '2.2'
 services:
-  mysqldb:
+  database:
     image: mysql:8
-    restart: unless-stopped
-    env_file: ./.env
+    container_name: mysqldb2
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=tpachato
+      MYSQL_DATABASE: tpachato
+      MYSQL_USER: oussema
+      MYSQL_PASSWORD: ouss
+      MYSQL_ROOT_PASSWORD: ouss
     ports:
       - 3306:3306
+
     volumes:
-      - db:/var/lib/mysql
-  app:
-    depends_on:
-      - mysqldb
-    build: .
-    restart: on-failure
-    env_file: ./.env
+      - /home/mysql/data:/var/lib/mysql
+  spring-boot:
+    build: ./
+    container_name: spring2
     ports:
       - 8888:8089
-    environment:
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
-        "spring.datasource.username" : "$MYSQLDB_USER",
-        "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update"
-      }'
-    volumes:
-      - .m2:/root/.m2
-    stdin_open: true
-    tty: true
-
-volumes:
-  db:
+    depends_on:
+      - database
+    restart: on-failure
